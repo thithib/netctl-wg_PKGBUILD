@@ -1,0 +1,28 @@
+pkgbase = netctl
+	pkgdesc = Profile based systemd network management
+	pkgver = 1.20
+	pkgrel = 2
+	url = https://projects.archlinux.org/netctl.git/
+	install = netctl.install
+	arch = any
+	license = GPL
+	makedepends = pkg-config
+	depends = coreutils
+	depends = iproute2
+	depends = resolvconf
+	depends = systemd>=233
+	optdepends = dialog: for the menu based wifi assistant
+	optdepends = dhclient: for DHCP support (or dhcpcd)
+	optdepends = dhcpcd: for DHCP support (or dhclient)
+	optdepends = wpa_supplicant: for wireless networking support
+	optdepends = ifplugd: for automatic wired connections through netctl-ifplugd
+	optdepends = ppp: for PPP connections
+	optdepends = openvswitch: for Open vSwitch connections
+	source = https://sources.archlinux.org/other/packages/netctl/netctl-1.20.tar.xz
+	source = https://sources.archlinux.org/other/packages/netctl/netctl-1.20.tar.xz.sig
+	validpgpkeys = CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E
+	md5sums = f9080693f493c20974db9fe12f103121
+	md5sums = 0eab26777bff05568e3d59ce432821b3
+
+pkgname = netctl
+
