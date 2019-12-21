@@ -1,12 +1,14 @@
-pkgbase = netctl
-	pkgdesc = Profile based systemd network management
+pkgbase = netctl-wg
+	pkgdesc = Profile based systemd network management, with WireGuard support
 	pkgver = 1.20
-	pkgrel = 2
+	pkgrel = 1
 	url = https://projects.archlinux.org/netctl.git/
 	install = netctl.install
 	arch = any
 	license = GPL
 	makedepends = pkg-config
+	makedepends = asciidoc
+	makedepends = git
 	depends = coreutils
 	depends = iproute2
 	depends = resolvconf
@@ -18,11 +20,12 @@ pkgbase = netctl
 	optdepends = ifplugd: for automatic wired connections through netctl-ifplugd
 	optdepends = ppp: for PPP connections
 	optdepends = openvswitch: for Open vSwitch connections
-	source = https://sources.archlinux.org/other/packages/netctl/netctl-1.20.tar.xz
-	source = https://sources.archlinux.org/other/packages/netctl/netctl-1.20.tar.xz.sig
+	optdepends = wireguard-tools: for WireGuard connections
+	conflicts = netctl
+	source = git+https://github.com/thithib/netctl#branch=wireguard?signed
 	validpgpkeys = CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E
-	md5sums = f9080693f493c20974db9fe12f103121
-	md5sums = 0eab26777bff05568e3d59ce432821b3
+	validpgpkeys = B663151724E4C3D82C250F4369E7F43252C4F70A
+	md5sums = SKIP
 
-pkgname = netctl
+pkgname = netctl-wg
 

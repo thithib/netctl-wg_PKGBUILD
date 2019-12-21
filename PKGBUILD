@@ -1,14 +1,13 @@
-# Maintainer: Jouke Witteveen <j.witteveen@gmail.com>
+# Maintainer: Thibaut Sautereau (thithib) <thibaut at sautereau dot fr>
 
-pkgname=netctl
+pkgname=netctl-wg
 pkgver=1.20
-pkgrel=2
-pkgdesc='Profile based systemd network management'
+pkgrel=1
+pkgdesc='Profile based systemd network management, with WireGuard support'
 url='https://projects.archlinux.org/netctl.git/'
 license=('GPL')
 depends=('coreutils' 'iproute2' 'resolvconf' 'systemd>=233')
-# The source tarball includes pre-built (using asciidoc) documentation.
-makedepends=('pkg-config')
+makedepends=('pkg-config' 'asciidoc' 'git')
 optdepends=('dialog: for the menu based wifi assistant'
             'dhclient: for DHCP support (or dhcpcd)'
             'dhcpcd: for DHCP support (or dhclient)'
@@ -16,16 +15,18 @@ optdepends=('dialog: for the menu based wifi assistant'
             'ifplugd: for automatic wired connections through netctl-ifplugd'
             'ppp: for PPP connections'
             'openvswitch: for Open vSwitch connections'
+            'wireguard-tools: for WireGuard connections'
            )
+conflicts=('netctl')
 install=netctl.install
-source=(https://sources.archlinux.org/other/packages/netctl/netctl-${pkgver}.tar.xz{,.sig})
+source=('git+https://github.com/thithib/netctl#branch=wireguard?signed')
 arch=('any')
-md5sums=('f9080693f493c20974db9fe12f103121'
-         '0eab26777bff05568e3d59ce432821b3')
-validpgpkeys=('CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E')  # Florian Pritz
+md5sums=('SKIP')
+validpgpkeys=('CFA6AF15E5C74149FC1D8C086D1655C14CE1C13E'  # Florian Pritz
+              'B663151724E4C3D82C250F4369E7F43252C4F70A')  # Thibaut Sautereau
 
 package() {
-  cd "$srcdir/netctl-${pkgver}"
+  cd "${pkgname%-wg}"
   make DESTDIR="$pkgdir" install
 
   # Shell Completion
